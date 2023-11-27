@@ -46,9 +46,9 @@ export default function Category() {
  const handleAddModal =()=>{
   setOpen(true)
  } 
-  const handleClose=()=>{
-  setOpen(false)
-}
+    const handleClose=()=>{
+    setOpen(false)
+  }
 const handleDelete =(id)=>{
   console.log(id)
   setDeleteOpen(true)

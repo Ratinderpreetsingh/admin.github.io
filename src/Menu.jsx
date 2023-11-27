@@ -7,10 +7,11 @@ import { useNavigate } from 'react-router-dom';
 const menu=[
   {name:"Dashboard",path:'/',icon:<InboxIcon />},
   {name:"Users",path:'/users',icon:<InboxIcon />},
-  {name:"Settings",path:'/settings',icon:<InboxIcon />},
   {name:"Product",path:'/products',icon:<InboxIcon />},
   {name:"Category",path:'/category',icon:<InboxIcon />},
   {name:"Order",path:'/order',icon:<InboxIcon />},
+  {name:"Settings",path:'/settings',icon:<InboxIcon />},
+
 
 
 ]
