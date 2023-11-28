@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
 import { styled } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
+import { createUser } from '../../Slice/User_Slice';
 
 const style = {
   position: 'absolute',
@@ -24,7 +25,7 @@ const AddUser = ({ open, handleClose }) => {
   const dispatch = useDispatch();
 
   const initialValues = {
-    username: '',
+    name: '',
     gender:''
   };
 
@@ -37,7 +38,7 @@ const AddUser = ({ open, handleClose }) => {
     initialValues: initialValues,
     onSubmit: (values) => {
     console.log(values);
-    // dispatch(createCategory(values))
+    dispatch(createUser(values))
       handleClose();
     },
   });
@@ -55,14 +56,14 @@ const AddUser = ({ open, handleClose }) => {
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField
-            id="username"
-            name="username"
+            id="name"
+            name="name"
             label="user Name"
             variant="outlined"
             fullWidth
             margin="normal"
             onChange={handleChange}
-            value={values.username}
+            value={values.name}
           />
            <TextField
             id="gender"
