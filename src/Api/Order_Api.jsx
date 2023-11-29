@@ -21,3 +21,14 @@ export const getProduct_ById_api = async(id)=>{
 
   }
 }
+
+
+export const delete_order = async(id)=>{
+  try {
+    const response = axios.delete(`${Base_Url}api/order/delete/${id}`)
+    return response
+  } catch (error) {
+    console.error(error);
+
+  }
+}

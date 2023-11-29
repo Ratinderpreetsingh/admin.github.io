@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAll_orderapi, getProduct_ById_api } from "../Api/Order_Api";
+import { delete_order, getAll_orderapi, getProduct_ById_api } from "../Api/Order_Api";
 
 const initialState = {
   currentOrder: [],
@@ -31,6 +31,19 @@ export const Get_order_By_id = createAsyncThunk(
     }
   }
 );
+export const delete_order_By_id = createAsyncThunk(
+  'order/delete_order_By_id',
+  async (id) => {
+    try {
+      const response = await delete_order(id);
+      console.log(response.data)
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 
 export const Order_Slice = createSlice({
   name: 'order',
@@ -63,7 +76,22 @@ export const Order_Slice = createSlice({
       .addCase(Get_order_By_id.rejected, (state, action) => {
         state.loading = false;
         state.error = "Fetching order by ID failed";
-      });
+      })
+      // delete
+      .addCase(delete_order_By_id.fulfilled,(state,action)=>{
+        const allOrders = state.orders.filter((items)=>items._id !==action.payload._id)
+        state.orders = allOrders
+        state.loading = false;
+        state.error = null
+      })
+      .addCase(delete_order_By_id.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(delete_order_By_id.rejected, (state, action) => {
+        state.loading = false;
+        state.error = null
+      })
   },
 });
 

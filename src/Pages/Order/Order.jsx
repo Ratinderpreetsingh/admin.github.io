@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { GetAll_orders } from '../../Slice/Order_Slice';
+import { GetAll_orders, delete_order_By_id } from '../../Slice/Order_Slice';
 import Loading from '../../Loading/Loading';
 import { useNavigate } from 'react-router-dom';
 
@@ -48,6 +48,10 @@ useEffect(()=>{
 const handleView =(id)=>{
   navigate(`/order_view/${id}`)
 }
+const handleDelete =(id)=>{
+  dispatch(delete_order_By_id(id))
+}
+
   return (
   <>
   {
@@ -71,30 +75,32 @@ const handleView =(id)=>{
           </TableRow>
         </TableHead>
         <TableBody>
-  {
-    state.orders.map((items,index)=>{
-        return   <StyledTableRow key={index} >
-        <StyledTableCell align="center">{index+1}</StyledTableCell>
-        <StyledTableCell align="center">{items.user.name}</StyledTableCell>
-        <StyledTableCell align="center">{items?.products.length}</StyledTableCell>
-        <StyledTableCell align="center">{items.totalAmount}</StyledTableCell>
-        <StyledTableCell align="center">Proceesing</StyledTableCell>
+{
+  state.orders && state.orders.map((items,index)=>{
+    return <StyledTableRow key={index} >
+    <StyledTableCell align="center">{index+1}</StyledTableCell>
+    <StyledTableCell align="center">{items?.user?.name}</StyledTableCell>
+    <StyledTableCell align="center">{items?.orderItems?.length}</StyledTableCell>
+    <StyledTableCell align="center">{items?.totalAmount}</StyledTableCell>
+    <StyledTableCell align="center">{items?.status}</StyledTableCell>
 
-        <StyledTableCell align="center">
-          <button style={{color:'white'}}
-        //   onClick={()=>handleDelete(items._id)}
-          >
-            Delete
-          </button>
-          <button style={{color:'white'}}
-          onClick={()=>handleView(items._id)}
-          >
-            View
-          </button>
-        </StyledTableCell>
-      </StyledTableRow>
-    })
-  }
+    <StyledTableCell align="center">
+      <button style={{color:'white'}}
+      onClick={()=>handleDelete(items._id)}
+      >
+        Delete
+      </button>
+      <button style={{color:'white'}}
+      onClick={()=>handleView(items._id)}
+      >
+        View
+      </button>
+    </StyledTableCell>
+  </StyledTableRow>
+  })
+}
+      
+ 
     
 
 
