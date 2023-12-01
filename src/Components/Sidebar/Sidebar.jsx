@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Drawer, CssBaseline } from '@mui/material';
 import Menu from '../../Menu';
 import Routes from '../../Routes';
+import SerachBar from '../SerachBar/SerachBar';
 
 const AdminPanel = () => {
   return (
@@ -29,6 +30,7 @@ const AdminPanel = () => {
             <Menu />
           </Drawer>
           <main style={{ flexGrow: 1, padding: '24px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <SerachBar/>
             <Routes />
            </main>
 

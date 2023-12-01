@@ -58,7 +58,7 @@ const handleCloseDelete= ()=>{
 }
   return (
   <>
-      <TableContainer component={Paper}>
+      <TableContainer sx={{marginTop:'65px'}} component={Paper}>
     <button onClick={()=>handleAddModal()} >Add Category</button>
       <Table sx={{minWidth:1000}} aria-label="customized table">
         <TableHead>
