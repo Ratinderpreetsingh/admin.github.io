@@ -30,7 +30,7 @@ const AdminPanel = () => {
             <Menu />
           </Drawer>
           <main style={{ flexGrow: 1, padding: '24px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <SerachBar/>
+          {/* <SerachBar/> */}
             <Routes />
            </main>
 

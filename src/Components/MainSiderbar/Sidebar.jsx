@@ -71,7 +71,7 @@ function ResponsiveDrawer(props) {
 
         </Toolbar>
 
-        <SerachBar/>
+        {/* <SerachBar/> */}
       </AppBar>
       <Box
         component="nav"
@@ -111,6 +111,7 @@ function ResponsiveDrawer(props) {
       >
 
         <Toolbar />
+        <p>My favourite colour is visible to all as it is the colour of the sky. My favourite colour is blue. The essential sentences in the paragraph should be supplemented by the middle.</p>
         <RoutesSidebar/>
       </Box>
     </Box>

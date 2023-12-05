@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Dashboard from './Components/Sidebar/Dashboard';
 import Settings from './Components/Sidebar/Setting';
 import Product from './Pages/Product/Product';
 import Category from './Pages/Category/Category';
@@ -10,11 +9,12 @@ import ProtectedRoutes from './ProtectedRoutes/ProtectedRoutes';
 import Order from './Pages/Order/Order'
 import OrderView from './Pages/Order/OrderView';
 import User from './Pages/User/User';
+import Dashbord from './Pages/Dashboard/Dashbord';
 const RoutesSidebar = () => {
   return (
     <Routes>
       <Route path='/login'              element={<Login />} />
-      <Route path="/"                   element={<ProtectedRoutes><Dashboard />  </ProtectedRoutes> } />
+      <Route path="/"                   element={<ProtectedRoutes><Dashbord  />  </ProtectedRoutes> } />
       <Route path="/users"              element={<ProtectedRoutes><User />      </ProtectedRoutes>}/>
 
       {/* products */}
