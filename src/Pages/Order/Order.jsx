@@ -14,7 +14,7 @@ import Loading from "../../Loading/Loading";
 import { useNavigate } from "react-router-dom";
 import OrderAdd from "./OrderAdd";
 import { useState } from "react";
-
+import moment from "moment";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -78,8 +78,11 @@ const handleCloseDelete =()=>{
                 <StyledTableCell align="center">
                   No. of Products
                 </StyledTableCell>
+                
                 <StyledTableCell align="center">Total Amount</StyledTableCell>
                 <StyledTableCell align="center">Status</StyledTableCell>
+                <StyledTableCell align="center">orderDate</StyledTableCell>
+
                 <StyledTableCell align="center">Actions</StyledTableCell>
               </TableRow>
             </TableHead>
@@ -103,7 +106,9 @@ const handleCloseDelete =()=>{
                       <StyledTableCell align="center">
                         {items?.status}
                       </StyledTableCell>
-
+                      <StyledTableCell align="center">
+                      {moment(items?.orderDate).format("DD/MM/YYYY")}
+                      </StyledTableCell>
                       <StyledTableCell align="center">
                         <button
                           style={{ color: "white" }}
