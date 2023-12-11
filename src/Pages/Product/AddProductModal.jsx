@@ -55,13 +55,13 @@ const AddProductModal = ({ open, handleClose }) => {
     description: "",
     price: "",
     sizes: [],
+    
   };
 
   const handleImageChange = (e) => {
-    const selectedImages = e.target.files;
-    const imageUrls = Array.from(selectedImages)
-    setImages(imageUrls);
+    setImages([...images, ...e.target.files]);
   };
+  
   
   const {
     values,
@@ -73,18 +73,20 @@ const AddProductModal = ({ open, handleClose }) => {
   } = useFormik({
     initialValues: initialValues,
     onSubmit: (values) => {
-      console.log({ ...values, images: images });
+      console.log(values)
+      console.log(images);
+      // console.log({ ...values, images: images });
       // console.log(images)
       const modify = { ...values, images: images,category:selectCategory };
       console.log(modify);
       try {
-        dispatch(createProduct(modify));
+        dispatch(createProduct(values));
         handleClose();
 
       } catch (error) {
         
       }finally{
-        dispatch(getAllProducts())
+        // dispatch(getAllProducts())
 
            
       }
@@ -206,20 +208,7 @@ const AddProductModal = ({ open, handleClose }) => {
             </Button>
           </label>
           <div>
-{/*             
-          {images && (
-            <div>
-              <img
-                src={images}
-                alt="Uploaded Image"
-                style={{
-                  maxWidth: "100px",
-                  maxHeight: "100px",
-                  margin: "5px",
-                }}
-              />
-            </div>
-          )} */}
+
             {images.map((image, index) => (
               <img
                 key={index}
